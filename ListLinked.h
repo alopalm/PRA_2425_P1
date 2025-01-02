@@ -79,7 +79,7 @@ class ListLinked : public List<T> {
 		return removed_data;
 	
 	}
-	T get(int pos) override{
+	T get(int pos) const override{
 	
 		if ( pos < 0 || pos >= n){
 			throw std::out_of_range("Posición Inválida");
@@ -91,7 +91,7 @@ class ListLinked : public List<T> {
 		T value = current-> data;
 		return value;
 	}
-	int search(T e) override{ 
+	int search(T e) const override{ 
 		int pos = 0;
 		Node<T>* current = first;
 		while( current != nullptr){
