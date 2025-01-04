@@ -19,10 +19,32 @@ bin/testPoint2D: testPoint2D.cpp Point2D.o
 Circle.o: Circle.h Circle.cpp
 	g++ -c Circle.cpp
 
+Rectangle.o: Rectangle.h Rectangle.cpp
+	g++ -c Rectangle.cpp
+
+bin/testRectangle: testRectangle.cpp Rectangle.o Shape.o Point2D.o
+	g++ -c testRectangle.cpp
+	mkdir -p bin
+	g++ -o bin/testRectangle testRectangle.o Rectangle.o Shape.o Point2D.o
+
+
+Square.o: Square.h Square.cpp
+	g++ -c Square.cpp
+
+bin/testSquare: testSquare.cpp Square.o Rectangle.o Point2D.o Shape.o
+	g++ -c testSquare.cpp
+	mkdir -p bin
+	g++ -o bin/testSquare testSquare.o Square.o Rectangle.o Point2D.o Shape.o
 bin/testCircle: testCircle.cpp Circle.o Shape.o Point2D.o
 	g++ -c testCircle.cpp
 	mkdir -p bin
 	g++ -o bin/testCircle testCircle.o Circle.o Shape.o Point2D.o
+
+Drawing.o: Drawing.h Drawing.cpp
+	g++ -c Drawing.cpp
+bin/testDrawing: testDrawing.cpp Drawing.o Square.o Rectangle.o Circle.o Shape.o Point2D.o
+	mkdir -p bin
+	g++ -o bin/testDrawing testDrawing.cpp Drawing.o Square.o Rectangle.o Circle.o Shape.o Point2D.o
 
 Shape.o: Shape.h Shape.cpp
 	g++ -c Shape.cpp -o Shape.o
